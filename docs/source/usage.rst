@@ -261,3 +261,56 @@ Example response:
       }
     ]
   }
+
+Update Redis Rule
++++++++++++++++++
+
+Endpoint: [PUT] https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
+
+To update a ACL redis rule.
+
+Request body:
+
+.. code-block:: json
+
+  {
+    "name": "ACL-rule-example",
+    "redisRule": "string"
+  }
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "ACL-rule-example",
+         "redisRule": "string"
+       }'
+
+Example response:
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T14:45:17.256Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
