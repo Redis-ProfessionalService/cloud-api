@@ -19,7 +19,7 @@
 
 project = 'Redis Cloud REST API Documentation'
 copyright = '2023, Redis Enterprise Professional Services'
-author = 'Khashayar Hajian'
+author = 'Professional Services'
 
 release = '0.1'
 version = '0.1.0'
