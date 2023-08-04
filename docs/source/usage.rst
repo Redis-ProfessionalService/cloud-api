@@ -17,9 +17,11 @@ You can use the Redis Enterprise Cloud REST API to update, delete and list users
 List Users
 ^^^^^^^^^^
 
-Endpoint: [GET] https://api.redislabs.com/v1/users
+:guilabel:`GET` https://api.redislabs.com/v1/users
 
 To retrieve list of users of current account.
+
+**API call**
 
 .. code-block:: shell
 
@@ -28,7 +30,7 @@ To retrieve list of users of current account.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -55,9 +57,11 @@ Example response:
 Get User by ID
 ^^^^^^^^^^^^^^
 
-Endpoint: [GET] https://api.redislabs.com/v1/users/{userId}
+:guilabel:`GET` https://api.redislabs.com/v1/users/{userId}
 
 To retrieve a user's detail by its ID.
+
+**API call**
 
 .. code-block:: shell
 
@@ -66,7 +70,7 @@ To retrieve a user's detail by its ID.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -89,18 +93,33 @@ Example response:
 Update User
 ^^^^^^^^^^^
 
-Endpoint: [PUT] https://api.redislabs.com/v1/users/{userId}
+:guilabel:`PUT` https://api.redislabs.com/v1/users/{userId}
 
 To update a user's detail by its ID.
+
+**Request body**
+
+.. code-block:: json
+
+  {
+    "name": "My new user name",
+    "role": "Owner"
+  }
+
+**API call**
 
 .. code-block:: shell
 
   curl -s -X PUT "https://api.redislabs.com/v1/users/$USER_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
-       -H "x-api-secret-key: $SECRET_KEY"
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "My new user name",
+         "role": "Owner"
+       }'
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -130,9 +149,11 @@ Example response:
 Delete User
 ^^^^^^^^^^^
 
-Endpoint: [DELETE] https://api.redislabs.com/v1/users/{userId}
+:guilabel:`DELETE` https://api.redislabs.com/v1/users/{userId}
 
 To delete a user by its ID from current account.
+
+**API call**
 
 .. code-block:: shell
 
@@ -141,7 +162,7 @@ To delete a user by its ID from current account.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -180,9 +201,11 @@ Information on current account's ACL users
 List Redis Rules
 ++++++++++++++++
 
-Endpoint: [GET] https://api.redislabs.com/v1/acl/redisRules
+:guilabel:`GET` https://api.redislabs.com/v1/acl/redisRules
 
 To retrieve list of ACL redis rules.
+
+**API call**
 
 .. code-block:: shell
 
@@ -191,7 +214,7 @@ To retrieve list of ACL redis rules.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -225,9 +248,11 @@ Example response:
 Create Redis Rule
 +++++++++++++++++
 
-Endpoint: [POST] https://api.redislabs.com/v1/acl/redisRules
+:guilabel:`POST` https://api.redislabs.com/v1/acl/redisRules
 
 To create a redis rule ACL.
+
+**API call**
 
 .. code-block:: shell
 
@@ -236,7 +261,7 @@ To create a redis rule ACL.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
@@ -265,7 +290,7 @@ Example response:
 Update Redis Rule
 +++++++++++++++++
 
-:guilabel:`[PUT]` https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
+:guilabel:`PUT` https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
 
 To update a ACL redis rule.
 
@@ -278,7 +303,7 @@ To update a ACL redis rule.
     "redisRule": "string"
   }
 
-**API Call**
+**API call**
 
 .. code-block:: shell
 
