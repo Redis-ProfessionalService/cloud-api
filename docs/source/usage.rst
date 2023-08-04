@@ -26,6 +26,29 @@ To retrieve list of users of current account.
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
 
+Example response:
+
+.. code-block:: json
+
+  {
+    "account": 1001,
+    "users": [
+      {
+        "id": 60192,
+        "name": "Clifford O'neill",
+        "email": "clifford.mail@gmail.com",
+        "role": "Viewer",
+        "userType": "Local",
+        "hasApiKey": false,
+        "options": {
+          "billing": false,
+          "emailAlerts": false,
+          "operationalEmails": false,
+          "mfaEnabled": false
+        }
+      }
+    ]
+  }
 
 .. _installation:
 
