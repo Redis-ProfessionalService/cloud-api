@@ -9,8 +9,8 @@ You can access and use the API endpoint URI (https://api.redislabs.com/v1) with 
 
 The following examples use the cURL utility. You can use any REST client to work with the Redis Cloud REST API.
 
-Manage Users
-------------
+Users
+-----
 
 You can use the Redis Enterprise Cloud REST API to update, delete and list users.
 
@@ -163,6 +163,61 @@ Example response:
         "additionalProp1": {},
         "additionalProp2": {},
         "additionalProp3": {}
+      }
+    ]
+  }
+
+ACL
+---
+
+Data and operations related to access control list.
+
+Redis Rules
+^^^^^^^^^^^
+
+Information on current account's ACL users
+
+Get ACL Redis Rules
++++++++++++++++++++
+
+Endpoint: [GET] https://api.redislabs.com/v1/acl/redisRules
+
+To retrieve list of ACL redis rules.
+
+.. code-block:: shell
+
+  curl -s -X GET "https://api.redislabs.com/v1/acl/redisRules" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+Example response:
+
+.. code-block:: json
+
+  {
+    "accountId": 1001,
+    "redisRules": [
+      {
+        "id": 7,
+        "name": "Full-Access",
+        "acl": "+@all  ~*",
+        "isDefault": true,
+        "status": "active"
+      },
+      {
+        "id": 8,
+        "name": "Read-Write",
+        "acl": "+@all -@dangerous ~*",
+        "isDefault": true,
+        "status": "active"
+      },
+      {
+        "id": 9,
+        "name": "Read-Only",
+        "acl": "+@read ~*",
+        "isDefault": true,
+        "status": "active"
       }
     ]
   }
