@@ -26,7 +26,7 @@ Account Key
 -----------
 The account key identifies your specific account when you perform an API request. This is the account responsible for your subscription.
 
-.. note::
+.. caution::
   
   An account key is an account-level secret. Do not share this key with anyone not authorized to use the account.
 
@@ -40,7 +40,7 @@ The user key is a personal key that belongs to a specific user having the owner 
 
 You can view keys or copy their values only during the creation process.
 
-.. note::
+.. warning::
   
   User keys are personal secrets. Do not share them.
 
