@@ -17,7 +17,7 @@ You can use the Redis Enterprise Cloud REST API to update, delete and list users
 List Users
 ^^^^^^^^^^
 
-Endpoint: https://api.redislabs.com/v1/users
+Endpoint: [GET] https://api.redislabs.com/v1/users
 
 To retrieve list of users of current account.
 
@@ -55,13 +55,13 @@ Example response:
 Get User by ID
 ^^^^^^^^^^^^^^
 
-Endpoint: https://api.redislabs.com/v1/users/{userId}
+Endpoint: [GET] https://api.redislabs.com/v1/users/{userId}
 
 To retrieve a user's detail by its ID.
 
 .. code-block:: shell
 
-  curl -s -X GET "https://api.redislabs.com/v1/users/60192" \
+  curl -s -X GET "https://api.redislabs.com/v1/users/$USER_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
@@ -83,4 +83,86 @@ Example response:
       "operationalEmails": false,
       "mfaEnabled": false
     }
+  }
+
+
+Update User
+^^^^^^^^^^^
+
+Endpoint: [PUT] https://api.redislabs.com/v1/users/{userId}
+
+To update a user's detail by its ID.
+
+.. code-block:: shell
+
+  curl -s -X PUT "https://api.redislabs.com/v1/users/$USER_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+Example response:
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T13:22:06.585Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+
+Delete User
+^^^^^^^^^^^
+
+Endpoint: [DELETE] https://api.redislabs.com/v1/users/{userId}
+
+To delete a user by its ID from current account.
+
+.. code-block:: shell
+
+  curl -s -X DELETE "https://api.redislabs.com/v1/users/$USER_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+Example response:
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T13:24:06.944Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
   }
