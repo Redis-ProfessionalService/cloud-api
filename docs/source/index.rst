@@ -22,4 +22,3 @@ Contents
 
    prerequisite
    usage
-   api
