@@ -40,7 +40,7 @@ The user key is a personal key that belongs to a specific user having the owner 
 
 You can view keys or copy their values only during the creation process.
 
-.. warning::
+.. caution::
   
   User keys are personal secrets. Do not share them.
 
