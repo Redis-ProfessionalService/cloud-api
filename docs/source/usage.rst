@@ -269,7 +269,7 @@ Endpoint: [PUT] https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
 
 To update a ACL redis rule.
 
-Request body:
+**Request body**
 
 .. code-block:: json
 
@@ -277,6 +277,8 @@ Request body:
     "name": "ACL-rule-example",
     "redisRule": "string"
   }
+
+**API Call**
 
 .. code-block:: shell
 
@@ -289,7 +291,7 @@ Request body:
          "redisRule": "string"
        }'
 
-Example response:
+**Response body**
 
 .. code-block:: json
 
