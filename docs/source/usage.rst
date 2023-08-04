@@ -265,7 +265,7 @@ Example response:
 Update Redis Rule
 +++++++++++++++++
 
-Endpoint: [PUT] https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
+:guilabel:`[PUT]` https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
 
 To update a ACL redis rule.
 
