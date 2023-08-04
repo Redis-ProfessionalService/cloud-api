@@ -17,11 +17,13 @@ You can use the Redis Enterprise Cloud REST API to update, delete and list users
 List Users
 ^^^^^^^^^^
 
+Endpoint: https://api.redislabs.com/v1/users
+
 To retrieve list of users of current account.
 
 .. code-block:: shell
 
-  curl -s -X GET "https://$HOST/logs" \
+  curl -s -X GET "https://api.redislabs.com/v1/users" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
@@ -50,34 +52,35 @@ Example response:
     ]
   }
 
-.. _installation:
+Get User by ID
+^^^^^^^^^^^^^^
 
-Installation
-------------
+Endpoint: https://api.redislabs.com/v1/users/{userId}
 
-To use Lumache, first install it using pip:
+To retrieve a user's detail by its ID.
 
-.. code-block:: console
+.. code-block:: shell
 
-   (.venv) $ pip install lumache
+  curl -s -X GET "https://api.redislabs.com/v1/users/60192" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
 
-Creating recipes
-----------------
+Example response:
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+.. code-block:: json
 
-.. autofunction:: lumache.get_random_ingredients
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+  {
+    "id": 60192,
+    "name": "Clifford O'neill",
+    "email": "clifford.mail@gmail.com",
+    "role": "Viewer",
+    "userType": "Local",
+    "hasApiKey": false,
+    "options": {
+      "billing": false,
+      "emailAlerts": false,
+      "operationalEmails": false,
+      "mfaEnabled": false
+    }
+  }
