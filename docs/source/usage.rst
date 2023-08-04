@@ -252,6 +252,15 @@ Create Redis Rule
 
 To create a redis rule ACL.
 
+**Request body**
+
+.. code-block:: json
+
+  {
+    "name": "ACL-rule-example",
+    "redisRule": "string"
+  }
+
 **API call**
 
 .. code-block:: shell
@@ -259,7 +268,11 @@ To create a redis rule ACL.
   curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
-       -H "x-api-secret-key: $SECRET_KEY"
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "ACL-rule-example",
+         "redisRule": "string"
+       }'
 
 **Response body**
 
@@ -307,7 +320,7 @@ To update an ACL redis rule.
 
 .. code-block:: shell
 
-  curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
+  curl -s -X PUT "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY" \
@@ -354,7 +367,7 @@ To update an ACL redis rule.
 
 .. code-block:: shell
 
-  curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
+  curl -s -X DELETE "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
@@ -543,7 +556,7 @@ To update an ACL role.
 
 .. code-block:: shell
 
-  curl -s -X POST "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
+  curl -s -X PUT "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY" \
@@ -601,7 +614,229 @@ To delete an ACL role.
 
 .. code-block:: shell
 
-  curl -s -X POST "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
+  curl -s -X DELETE "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:34:07.530Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+---------------------------------------------------------------------------------------------------------------------
+
+Users
+^^^^^
+
+Information on current account's ACL users
+
+List Users
+++++++++++
+
+:guilabel:`GET` https://api.redislabs.com/v1/acl/users
+
+To retrieve list of ACL users.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X GET "https://api.redislabs.com/v1/acl/users" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "accountId": 1001,
+    "users": [
+      {
+        "id": 1,
+        "name": "user",
+        "role": "role-name",
+        "status": "active",
+        "links": []
+      }
+    ]
+  }
+
+Create User
++++++++++++
+
+:guilabel:`POST` https://api.redislabs.com/v1/acl/users
+
+To create a new ACL user.
+
+**Request body**
+
+.. code-block:: json
+
+  {
+    "name": "ACL-user-example",
+    "role": "Redis-role-example",
+    "password": "some-random-password"
+  }
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/roles" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "ACL-user-example",
+         "role": "Redis-role-example",
+         "password": "some-random-password"
+       }'
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:43:54.564Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+Get User
+++++++++
+
+:guilabel:`GET` https://api.redislabs.com/v1/acl/users/{aclUserId}
+
+To retrieve an ACL user.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X GET "https://api.redislabs.com/v1/acl/users/$USER_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "id": 1,
+    "name": "abc",
+    "role": "role-name",
+    "status": "active"
+  }
+
+Update User
++++++++++++
+
+:guilabel:`PUT` https://api.redislabs.com/v1/acl/users/{aclUserId}
+
+To update an ACL user.
+
+**Request body**
+
+.. code-block:: json
+
+  {
+    "role": "Redis-role-example",
+    "password": "some-random-password"
+  }
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X PUT "https://api.redislabs.com/v1/acl/users/$USER_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "role": "Redis-role-example",
+         "password": "some-random-password"
+       }'
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:52:02.810Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+
+Delete User
++++++++++++++++++
+
+:guilabel:`DELETE` https://api.redislabs.com/v1/acl/users/{aclUserId}
+
+To delete an ACL user.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X DELETE "https://api.redislabs.com/v1/acl/user/$USER_ID" \
        -H "accept: application/json" \
        -H "x-api-key: $ACCOUNT_KEY" \
        -H "x-api-secret-key: $SECRET_KEY"
