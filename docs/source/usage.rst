@@ -177,8 +177,8 @@ Redis Rules
 
 Information on current account's ACL users
 
-Get ACL Redis Rules
-+++++++++++++++++++
+List Redis Rules
+++++++++++++++++
 
 Endpoint: [GET] https://api.redislabs.com/v1/acl/redisRules
 
@@ -218,6 +218,46 @@ Example response:
         "acl": "+@read ~*",
         "isDefault": true,
         "status": "active"
+      }
+    ]
+  }
+
+Create Redis Rule
++++++++++++++++++
+
+Endpoint: [POST] https://api.redislabs.com/v1/acl/redisRules
+
+To create a redis rule ACL.
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+Example response:
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T14:45:17.256Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
       }
     ]
   }
