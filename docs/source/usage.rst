@@ -292,7 +292,7 @@ Update Redis Rule
 
 :guilabel:`PUT` https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
 
-To update a ACL redis rule.
+To update an ACL redis rule.
 
 **Request body**
 
@@ -326,6 +326,296 @@ To update a ACL redis rule.
     "status": "initialized",
     "description": "string",
     "timestamp": "2023-08-04T14:45:17.256Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+
+Delete Redis Rule
++++++++++++++++++
+
+:guilabel:`DELETE` https://api.redislabs.com/v1/acl/redisRules/{aclRedisRuleId}
+
+To update an ACL redis rule.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/redisRules/$RULE_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:13:29.868Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+Roles
+^^^^^
+
+Information on current account's ACL roles
+
+List Roles
+++++++++++
+
+:guilabel:`GET` https://api.redislabs.com/v1/acl/roles
+
+To retrieve list of ACL roles.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X GET "https://api.redislabs.com/v1/acl/roles" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "accountId": 1001,
+    "roles": [
+      {
+        "id": 395,
+        "name": "role-name",
+        "redisRules": [
+          {
+            "ruleId": 7,
+            "ruleName": "Full-Access",
+            "databases": [
+              {
+                "subscriptionId": 126,
+                "databaseId": 1,
+                "databaseName": "DB-RCP-2-81-7"
+              }
+            ]
+          }
+        ],
+        "users": [],
+        "status": "error"
+      }
+    ]
+  }
+
+Create Role
++++++++++++
+
+:guilabel:`POST` https://api.redislabs.com/v1/acl/roles
+
+To create a new ACL role.
+
+**Request body**
+
+.. code-block:: json
+
+  {
+    "name": "ACL-role-example",
+    "redisRules": [
+      {
+        "ruleName": "Read-Only",
+        "databases": [
+          {
+            "subscriptionId": 0,
+            "databaseId": 0,
+            "regions": []
+          }
+        ]
+      }
+    ]
+  }
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/roles" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "ACL-role-example",
+         "redisRules": [
+           {
+             "ruleName": "Read-Only",
+             "databases": [
+               {
+                 "subscriptionId": 0,
+                 "databaseId": 0,
+                 "regions": []
+               }
+             ]
+           }
+         ]
+       }'
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:24:12.789Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+Update Role
++++++++++++
+
+:guilabel:`PUT` https://api.redislabs.com/v1/acl/roles/{aclRoleId}
+
+To update an ACL role.
+
+**Request body**
+
+.. code-block:: json
+
+  {
+    "name": "ACL-role-example",
+    "redisRules": [
+      {
+        "ruleName": "Read-Only",
+        "databases": [
+          {
+            "subscriptionId": 0,
+            "databaseId": 0,
+            "regions": []
+          }
+        ]
+      }
+    ]
+  }
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY" \
+       -d '{
+         "name": "ACL-role-example",
+         "redisRules": [
+           {
+             "ruleName": "Read-Only",
+             "databases": [
+               {
+                 "subscriptionId": 0,
+                 "databaseId": 0,
+                 "regions": []
+               }
+             ]
+           }
+         ]
+       }'
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:32:47.628Z",
+    "response": {
+      "resourceId": 0,
+      "additionalResourceId": 0,
+      "resource": {},
+      "error": "UNAUTHORIZED",
+      "additionalInfo": "string"
+    },
+    "links": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+
+
+Delete Redis Rule
++++++++++++++++++
+
+:guilabel:`DELETE` https://api.redislabs.com/v1/acl/roles/{aclRoleId}
+
+To delete an ACL role.
+
+**API call**
+
+.. code-block:: shell
+
+  curl -s -X POST "https://api.redislabs.com/v1/acl/roles/$ROLE_ID" \
+       -H "accept: application/json" \
+       -H "x-api-key: $ACCOUNT_KEY" \
+       -H "x-api-secret-key: $SECRET_KEY"
+
+**Response body**
+
+.. code-block:: json
+
+  {
+    "taskId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "commandType": "string",
+    "status": "initialized",
+    "description": "string",
+    "timestamp": "2023-08-04T16:34:07.530Z",
     "response": {
       "resourceId": 0,
       "additionalResourceId": 0,
